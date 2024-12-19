@@ -1,0 +1,12 @@
+PATHS:
+  OLD_FILE: "./data/all_dataflows_previous.xlsx"
+  NEW_FILE: "./data/all_dataflows_new.xlsx"
+  RESULT_FILE: "./data/data_changes.xlsx"
+  LOG_FOLDER: "./logs"
+  DATA_CHANGES_FILE: "./data/data_changes.xlsx"
+  ARCHIVE_FOLDER: "./data/archive"
+
+API:
+  DATA_QUERY: "https://sdmx.oecd.org/public/rest/data/{agency_id},{dataflow_id}?format=csvfilewithlabels"
+  STRUCTURE_QUERY: "https://sdmx.oecd.org/public/rest/dataflow/{agency_id}/{dataflow_id}/{version}?references=all"
+  DATAFLOW_INFO: "https://sdmx.oecd.org/public/rest/dataflow/all"
