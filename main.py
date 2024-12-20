@@ -25,16 +25,8 @@ def main() -> None:
     # Track if an error occurred
     error_occurred = False
 
-    # Step 1: Fetch new API data and save the baseline file
-#    if not error_occurred:
-#       logger.info("Executing data fetching job...")
-#        try:
-#            fetch_and_save_api_data()
-#        except Exception as e:
-#            logger.error(f"Error during data fetching job: {e}", exc_info=True)
-#            error_occurred = True
 
-    # Step 2: Compare old and new files to find changes
+    # Compare old and new files to find changes
     if not error_occurred:
         logger.info("Executing data comparison job...")
         try:
@@ -43,7 +35,7 @@ def main() -> None:
             logger.error(f"Error during data comparison job: {e}", exc_info=True)
             error_occurred = True
 
-    # Step 3: Process 'New Insert' entries if changes exist
+    # Process 'New Insert' entries if changes exist
     if not error_occurred:
         logger.info("Executing API data download for New Inserts...")
         try:
