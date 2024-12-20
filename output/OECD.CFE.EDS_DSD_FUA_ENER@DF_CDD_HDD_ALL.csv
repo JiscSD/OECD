@@ -1,0 +1,2 @@
+STRUCTURE,STRUCTURE_ID,STRUCTURE_NAME,ACTION,REF_AREA,Reference area,FREQ,Frequency of observation,MEASURE,Measure,UNIT_MEASURE,Unit of measure,TERRITORIAL_LEVEL,Territorial level,TIME_PERIOD,Time period,OBS_VALUE,Observation value,OBS_STATUS,Observation status,UNIT_MULT,Unit multiplier,DECIMALS,Decimals
+DATAFLOW,OECD.CFE.EDS:DSD_FUA_ENER@DF_CDD_HDD(1.0),Cooling and heating degree days - Cities and FUAs,I,UK583C,Kettering,A,Annual,CDD,Cooling degree days,DD,Degree days,CITY,City,1970,,0,,A,Normal value,0,Units,0,Zero
