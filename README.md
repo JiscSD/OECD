@@ -20,6 +20,7 @@ This project automates the extraction, comparison, and storage of updated/insert
 - **`config.yaml`:** Configuration file with API endpoints, file names and file paths.
 - **`requirements.txt`:** Lists Python dependencies.
 
+
 ## Folder Requirements
 Ensure the following folders exist in the project directory before running the scripts:
 1. **`logs/`:**  
@@ -30,3 +31,31 @@ Ensure the following folders exist in the project directory before running the s
    - Used for storing the main dataset files (e.g., `all_dataflows_new.xlsx`, `all_dataflows_previous.xlsx`, `data_changes.xlsx`).
 4. **`data/archive/` :**  
    - Folder for archiving old datasets or backups .
+
+
+## How to Execute
+1. **Initial Setup:**
+   - Run `base_run.py` to fetch and save the baseline dataset:
+     ```bash
+     python base_run.py
+     ```
+   - This needs to run only once and will create the first version of the dataset (`all_dataflows_previous.xlsx`) and set up the workspace for subsequent runs.
+
+2. **Regular Workflow:**
+   - Run `main.py` for periodic execution:
+     ```bash
+     python main.py
+     ```
+   - This will:
+     - Have to scheduled for periodic automatic execution, eiher weekly or as per requirements
+     - Fetch the latest datasets from the OECD API.
+     - Compare the new dataset with the existing one to identify changes.
+     - Save detected changes to `data_changes.xlsx`.
+     - Download additional data and metadata for new records.
+
+3. **Output:**
+   - Logs: Found in the `logs/` folder.
+   - Change Summary: Saved as `data_changes.xlsx` in the `data/` directory.
+   - Downloaded Data and Metadata: Saved in the `output/` directory.
+
+For a detailed explanation of each script, its role, and how they work together, refer to the **[Confluence page](https://jiscdev.atlassian.net/wiki/x/I4AcSQE)**.
