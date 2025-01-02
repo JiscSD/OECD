@@ -24,16 +24,16 @@ def archive_file(file_path, archive_folder, prefix):
 
 def identify_changes(old_file, new_file, result_file):
     """
-    Compares two Excel files (old and new) to identify changes:
+    Compares two CSV files (old and new) to identify changes:
     - New Inserts
     - Deleted Records
     """
     try:
-        # Load old and new Excel files
+        # Load old and new CSV files
         logger.info(f"Loading old data file: {old_file}")
-        old_df = pd.read_excel(old_file)
+        old_df = pd.read_csv(old_file)
         logger.info(f"Loading new data file: {new_file}")
-        new_df = pd.read_excel(new_file)
+        new_df = pd.read_csv(new_file)
 
         # Check for column mismatch
         if not all(old_df.columns == new_df.columns):
@@ -89,7 +89,7 @@ def identify_changes(old_file, new_file, result_file):
 
         # Save the results to the result file
         if not combined_df.empty:
-            combined_df.to_excel(result_file, index=False)
+            combined_df.to_csv(result_file, index=False)
             logger.info(f"Changes saved successfully to {result_file}")
         else:
             logger.info("No changes detected. No result file created.")
