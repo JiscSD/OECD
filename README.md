@@ -11,14 +11,15 @@ This project automates the extraction, comparison, and storage of updated/insert
 
 ## File Structure
 - **`Functions/`:** Contains core utility scripts:
-  - `data_fetcher.py`: Fetches dataflows and saves them to Excel. Designed for first time dataset download as well as subsequent downloads (`all_dataflows_new.xlsx`, `all_dataflows_previous.xlsx`)
-  - `data_comparator.py`: Compares old `all_dataflows_previous.xlsx` and new datasets `all_dataflows_new.xlsx` and identifies changes `data_changes.xlsx`.
+  - `data_fetcher.py`: Fetches dataflows and saves them to CSV. Designed for first time dataset download as well as subsequent downloads (`all_dataflows_new.csv`, `all_dataflows_previous.csv`)
+  - `data_comparator.py`: Compares old `all_dataflows_previous.csv` and new datasets `all_dataflows_new.csv` and identifies changes `data_changes.csv`.
   - `api_downloader.py`: Downloads datasets and metadata for new entries.
   - `logger.py`: Configures logging for the project.
 - **`base_run.py`:** Initializes and manages the data fetching workflow for the first time to create Base dataset.
 - **`main.py`:** Invokes regular workflows, including data fetching, comparison, and metadata updates. This is to be scheduled and invoked on regular intervals
 - **`config.yaml`:** Configuration file with API endpoints, file names and file paths.
 - **`requirements.txt`:** Lists Python dependencies.
+- **`linux_cron_setup.txt`:** Scheduling setup to run the main.py job every two weeks once on Tuesday 7 am on Linux server.
 
 
 ## Folder Requirements
@@ -28,7 +29,7 @@ Ensure the following folders exist in the project directory before running the s
 2. **`output/`:**  
    - Used for saving downloaded datasets and metadata files.
 3. **`data/`:**  
-   - Used for storing the main dataset files (e.g., `all_dataflows_new.xlsx`, `all_dataflows_previous.xlsx`, `data_changes.xlsx`).
+   - Used for storing the main dataset files (e.g., `all_dataflows_new.csv`, `all_dataflows_previous.csv`, `data_changes.csv`).
 4. **`data/archive/` :**  
    - Folder for archiving old datasets or backups .
 
@@ -39,7 +40,7 @@ Ensure the following folders exist in the project directory before running the s
      ```bash
      python base_run.py
      ```
-   - This needs to run only once and will create the first version of the dataset (`all_dataflows_previous.xlsx`) and set up the workspace for subsequent runs.
+   - This needs to run only once and will create the first version of the dataset (`all_dataflows_previous.csv`) and set up the workspace for subsequent runs.
 
 2. **Regular Workflow:**
    - Run `main.py` for periodic execution:
@@ -47,15 +48,15 @@ Ensure the following folders exist in the project directory before running the s
      python main.py
      ```
    - This will:
-     - Have to scheduled for periodic automatic execution, eiher weekly or as per requirements
+     - Run every two weeks once on Tuesday 7 am once after moved to Linux server and executed.
      - Fetch the latest datasets from the OECD API.
      - Compare the new dataset with the existing one to identify changes.
-     - Save detected changes to `data_changes.xlsx`.
+     - Save detected changes to `data_changes.csv`.
      - Download additional data and metadata for new records.
 
 3. **Output:**
    - Logs: Found in the `logs/` folder.
-   - Change Summary: Saved as `data_changes.xlsx` in the `data/` directory.
+   - Change Summary: Saved as `data_changes.csv` in the `data/` directory.
    - Downloaded Data and Metadata: Saved in the `output/` directory.
 
 For a detailed explanation of each script, its role, and how they work together, refer to the **[Confluence page](https://jiscdev.atlassian.net/wiki/x/I4AcSQE)**.

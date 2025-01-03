@@ -30,7 +30,7 @@ def archive_existing_file():
             # Ensure archive folder exists
             archive_folder.mkdir(parents=True, exist_ok=True)
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            archived_file = archive_folder / f"all_dataflows_{timestamp}.xlsx"
+            archived_file = archive_folder / f"all_dataflows_{timestamp}.csv"
 
             # Copy the file to the archive folder
             shutil.copy2(output_file, archived_file)
@@ -52,7 +52,7 @@ def archive_existing_file():
 
 def fetch_and_save_api_data() -> bool:
     """
-    Fetches data from the OECD API (Dataflow), parses XML, and saves it to an Excel file.
+    Fetches data from the OECD API (Dataflow), parses XML, and saves it to a file.
     Returns:
         bool: True if successful, False otherwise.
     """
@@ -116,8 +116,8 @@ def fetch_and_save_api_data() -> bool:
                 # Convert to DataFrame
                 df = pd.DataFrame(data)
 
-                # Save DataFrame to Excel
-                df.to_excel(output_file, index=False)
+                # Save DataFrame to CSV
+                df.to_csv(output_file, index=False)
 
             except ET.ParseError:
                 return False
@@ -135,7 +135,7 @@ if __name__ == "__main__":
         print("Error archiving existing file.")
         sys.exit(1)
 
-    output_file = sys.argv[1] if len(sys.argv) > 1 else "all_dataflows_previous_1.xlsx"
+    output_file = sys.argv[1] if len(sys.argv) > 1 else "all_dataflows_previous_1.csv"
 
     config_path = project_root / "config.yaml"
     if config_path.exists():

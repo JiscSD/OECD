@@ -1,9 +1,9 @@
 PATHS:
-  OLD_FILE: "./data/all_dataflows_previous.xlsx"
-  NEW_FILE: "./data/all_dataflows_new.xlsx"
-  RESULT_FILE: "./data/data_changes.xlsx"
+  OLD_FILE: "./data/all_dataflows_previous.csv"
+  NEW_FILE: "./data/all_dataflows_new.csv"
+  RESULT_FILE: "./data/data_changes.csv"
   LOG_FOLDER: "./logs"
-  DATA_CHANGES_FILE: "./data/data_changes.xlsx"
+  DATA_CHANGES_FILE: "./data/data_changes.csv"
   ARCHIVE_FOLDER: "./data/archive"
 
 API:

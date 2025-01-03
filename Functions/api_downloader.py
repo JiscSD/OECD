@@ -35,9 +35,9 @@ def generate_and_save_api_data():
             logger.info(f"No data changes file found: '{data_changes_file}'")
             return 
 
-        # Load data_changes Excel file
+        # Load data_changes CSV file
         logger.info(f"Loading data changes file: {data_changes_file}")
-        df = pd.read_excel(data_changes_file)
+        df = pd.read_csv(data_changes_file)
 
         # Filter for 'New Insert' and Is Final = True
         new_inserts = df[(df['Change_Type'] == 'New Insert') & (df['Is Final'] == True)]
