@@ -1,0 +1,2 @@
+# Cron job for running main.py every two weeks on Tuesday at 7 AM
+0 7 * * 2 [ $(($(date +%s) / 86400 % 14)) -eq 0 ] && /usr/bin/python3 /<replace with actual Path>/OECD/main.py >> /<replace with actual Path>/OECD/logs/main.log 2>&1

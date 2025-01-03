@@ -19,6 +19,7 @@ This project automates the extraction, comparison, and storage of updated/insert
 - **`main.py`:** Invokes regular workflows, including data fetching, comparison, and metadata updates. This is to be scheduled and invoked on regular intervals
 - **`config.yaml`:** Configuration file with API endpoints, file names and file paths.
 - **`requirements.txt`:** Lists Python dependencies.
+- **`linux_cron_setup.txt`:** Scheduling setup to run the main.py job every two weeks once on Tuesday 7 am on Linux server.
 
 
 ## Folder Requirements
@@ -47,7 +48,7 @@ Ensure the following folders exist in the project directory before running the s
      python main.py
      ```
    - This will:
-     - Have to be scheduled for periodic automatic execution, eiher weekly or as per requirements
+     - Run every two weeks once on Tuesday 7 am once after moved to Linux server and executed.
      - Fetch the latest datasets from the OECD API.
      - Compare the new dataset with the existing one to identify changes.
      - Save detected changes to `data_changes.csv`.
